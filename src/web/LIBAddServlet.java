@@ -31,6 +31,11 @@ public class LIBAddServlet extends HttpServlet {
 		  out.print("if(!alert(\"id나 가격이 너무 큽니다.\")) document.location = 'LIBAddView.jsp';");
 		  out.print("</script>");
 	  }
+	  else if(spaceCheck(id) || spaceCheck(title) || spaceCheck(price) || spaceCheck(writer)) {
+		  out.print("<script>");
+		  out.print("if(!alert(\"정확한 값을 입력해주세요\")) document.location = 'LIBAddView.jsp';");
+		  out.print("</script>");
+	  }
 	  else if((Integer.parseInt(id) < 0 || Integer.parseInt(price) < 0)) {
 		  out.print("<script>");
 		  out.print("if(!alert(\"id나 가격을 확인해주세요.\")) document.location = 'LIBAddView.jsp';");
@@ -81,5 +86,16 @@ public class LIBAddServlet extends HttpServlet {
 	    
 	    return result;
   }
-  
+  public boolean spaceCheck(String spaceCheck)
+  {
+	  int tmp = 0;
+      for(int i = 0 ; i < spaceCheck.length() ; i++)
+      {
+          if(spaceCheck.charAt(i) == ' ')
+              tmp++;
+      }
+      if(tmp == spaceCheck.length())
+    	  return true;
+      return false;
+  }
 }

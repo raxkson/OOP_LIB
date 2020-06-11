@@ -34,8 +34,8 @@ public class SqlCheckWrapper extends HttpServletRequestWrapper  {
 	 if (value == null) {
 		 return null;                  
 	 }
-	 //return cleanXSS(value);
-	 return stripXSS(value);
+	 return cleanXSS(value);
+	 //return stripXSS(value);
 	}     
 
  
@@ -52,9 +52,9 @@ public class SqlCheckWrapper extends HttpServletRequestWrapper  {
  
 
 	private String cleanXSS(String value) {
-	 value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");         
-	 value = value.replaceAll("\\(", "& #40;").replaceAll("\\)", "& #41;");         
-	 value = value.replaceAll("'", "& #39;");        
+	 value = value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");         
+	 value = value.replaceAll("\\(", "&#40;").replaceAll("\\)", "&#41;");         
+	 value = value.replaceAll("'", "&#39;");        
 	 value = value.replaceAll("eval\\((.*)\\)", "");         
 	 value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
 	 value = value.replaceAll("script", "");        
