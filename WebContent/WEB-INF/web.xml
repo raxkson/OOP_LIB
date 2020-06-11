@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/ns/javaee" version="2.5">
+	<servlet>
+        <servlet-name>lib-list-servlet</servlet-name>
+        <servlet-class>web.LIBListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lib-list-servlet</servlet-name>
+        <url-pattern>/lib-list</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>lib-add-servlet</servlet-name>
+        <servlet-class>web.LIBAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lib-add-servlet</servlet-name>
+        <url-pattern>/lib-add</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>lib-rent-servlet</servlet-name>
+        <servlet-class>web.LIBRentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lib-rent-servlet</servlet-name>
+        <url-pattern>/lib-rent</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>lib-return-servlet</servlet-name>
+        <servlet-class>web.LIBReturnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lib-return-servlet</servlet-name>
+        <url-pattern>/lib-return</url-pattern>
+    </servlet-mapping>
+    
+    <filter>
+		<filter-name>sql-filter</filter-name>
+		<filter-class>filter.SqlCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sql-filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+    
+</web-app>
