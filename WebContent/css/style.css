@@ -11,3 +11,6 @@ footer1{
     background:#ccc;
 }
  
+#hover:hover{
+	cursor: pointer;
+}

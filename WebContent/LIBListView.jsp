@@ -40,7 +40,7 @@ window.onpageshow = (event) => {
                  <INPUT TYPE="hidden" name="id" value="${LIB_LIST.id[cnt]}">
         		 <input type="submit" id="submit-form" class="hidden" />
         		</FORM> 
-                <TR <c:if test="${param.RETURN != \"true\"}">onClick="location.href='LIBIndexView.jsp?id=${LIB_LIST.id[cnt]}&title=${LIB_LIST.title[cnt]}&writer=${LIB_LIST.writer[cnt]}&price=${LIB_LIST.price[cnt]}&rental=${LIB_LIST.rental[cnt]}'"</c:if>>
+                <TR id="hover" <c:if test="${param.RETURN != \"true\"}">onClick="location.href='LIBIndexView.jsp?id=${LIB_LIST.id[cnt]}&title=${LIB_LIST.title[cnt]}&writer=${LIB_LIST.writer[cnt]}&price=${LIB_LIST.price[cnt]}&rental=${LIB_LIST.rental[cnt]}&count=${LIB_LIST.count[cnt] }'"</c:if>>
                     <TD>${LIB_LIST.id[cnt]}</TD>
                     <TD>${LIB_LIST.title[cnt]}</TD>
                     <TD>${LIB_LIST.writer[cnt]}</TD>

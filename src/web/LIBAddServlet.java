@@ -19,16 +19,16 @@ public class LIBAddServlet extends HttpServlet {
 	  String writer = request.getParameter("writer");
 	  String price = request.getParameter("price");
 	  
-	  
-	  if((isNumber(id) || isNumber(price))) {
+	  try {
+	  if((isNumber(id) && isNumber(price))) {
 		  out.print("<script>");
 		  out.print("if(!alert(\"id나 가격은 숫자로 입력되어야 합니다.\")) document.location = 'LIBAddView.jsp';");
 		  out.print("</script>");
 		  //response.sendRedirect("LIBAddView.jsp");
 	  }
-	  else if(id.length() > 10 || price.length() > 10) {
+	  else if(id.length() > 10 || price.length() > 10 || title.length() > 30 || price.length() > 30) {
 		  out.print("<script>");
-		  out.print("if(!alert(\"id나 가격이 너무 큽니다.\")) document.location = 'LIBAddView.jsp';");
+		  out.print("if(!alert(\"값이 너무 큽니다.\")) document.location = 'LIBAddView.jsp';");
 		  out.print("</script>");
 	  }
 	  else if(spaceCheck(id) || spaceCheck(title) || spaceCheck(price) || spaceCheck(writer)) {
@@ -52,7 +52,11 @@ public class LIBAddServlet extends HttpServlet {
 			if(checkId(id)) {
 				String sql = "INSERT INTO library (id, title, writer, price, rental, count) VALUES ("+id+",\""+title+"\",\""+writer+"\","+price+",\"Y\",0);";
 				stmt.executeUpdate(sql);
-				response.sendRedirect("lib-list");
+				out.print("<script>");
+				out.print("if(!alert(\"추가가 완료 되었습니다.\")) document.location = 'lib-list';");
+				out.print("</script>");
+				
+				//response.sendRedirect("lib-list");
 			}else {
 				response.sendRedirect("LIBAddDone.jsp?RESULT=Duplicate");
 			}
@@ -60,7 +64,11 @@ public class LIBAddServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 	  }
-	  
+	  } catch (Exception e){
+		  out.print("<script>");
+		  out.print("if(!alert(\"입력값을 확인해주세요.\")) document.location = 'LIBAddView.jsp';");
+		  out.print("</script>");
+	  } 
   }
   private boolean checkId(String id) throws Exception {
 	  ResultSet rs = null;
@@ -80,6 +88,8 @@ public class LIBAddServlet extends HttpServlet {
 	    boolean result = true;
 	    for(int i = 0; i < input.length(); i++) {
 	    	tmp = input.charAt(i);
+	    	if(tmp == '\"')
+	    		result = false;
 	    	if('0' <= tmp && tmp <= '9')
 	    		result = false;
 	    }

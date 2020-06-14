@@ -14,7 +14,6 @@ public class LIBList{
   private ArrayList<String> rentalList = new ArrayList<String>();
   private ArrayList<Integer> countList = new ArrayList<Integer>();
   private ArrayList<Integer> pageList = new ArrayList<Integer>();
-  private ArrayList<Boolean> buttonList = new ArrayList<Boolean>();
   private int lastSize = 0;
   private boolean lastPage = false;
   public LIBList() {
@@ -67,9 +66,6 @@ public class LIBList{
   }
   public Integer[] getPageIndex() {
 	  	return pageList.toArray(new Integer[pageList.size()]);
-  }
-  public Boolean[] getButton() {
-	  return buttonList.toArray(new Boolean[buttonList.size()]);
   }
   public boolean isLastPage() {
     return lastPage;

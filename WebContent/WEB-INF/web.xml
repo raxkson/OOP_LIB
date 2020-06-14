@@ -20,6 +20,7 @@
         <servlet-name>lib-rent-servlet</servlet-name>
         <servlet-class>web.LIBRentServlet</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>lib-rent-servlet</servlet-name>
         <url-pattern>/lib-rent</url-pattern>
@@ -31,6 +32,26 @@
     <servlet-mapping>
         <servlet-name>lib-return-servlet</servlet-name>
         <url-pattern>/lib-return</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>lib-edit-servlet</servlet-name>
+        <servlet-class>web.LIBEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lib-edit-servlet</servlet-name>
+        <url-pattern>/lib-edit</url-pattern>
+    </servlet-mapping>
+    
+    
+     <servlet>
+        <servlet-name>lib-delete-servlet</servlet-name>
+        <servlet-class>web.LIBDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lib-delete-servlet</servlet-name>
+        <url-pattern>/lib-delete</url-pattern>
     </servlet-mapping>
     
     <filter>
