@@ -8,7 +8,7 @@
 
 ## DB Struct
 - Table name: library
-- |--------|-------------|------|-----|---------|-------|
+-
    | Field  | Type        | Null | Key | Default | Extra |
    |--------|-------------|------|-----|---------|-------|
    | id     | int         | NO   | PRI | NULL    |       |
@@ -17,6 +17,6 @@
    | price  | int         | NO   |     | NULL    |       |
    | rental | varchar(1)  | NO   |     | NULL    |       |
    | count  | int         | NO   |     | NULL    |       |
-   |--------|-------------|------|-----|---------|-------|
+
 
 
