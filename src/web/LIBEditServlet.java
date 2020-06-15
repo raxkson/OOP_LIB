@@ -9,6 +9,63 @@ public class LIBEditServlet extends HttpServlet {
 	DBConnector dbConnect = null;
 	Connection conn = null;
 	Statement stmt = null;
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+		String strId = request.getParameter("id");
+		int id = Integer.parseInt(strId);
+		
+		LIBIndex list = null;
+		try {
+		list = readDB(id);
+		} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		request.setAttribute("LIB_INDEX", list);
+		RequestDispatcher dispatcher;
+		dispatcher = request.getRequestDispatcher("LIBEditView.jsp");
+		dispatcher.forward(request, response);
+	}
+
+
+	private LIBIndex readDB(int id) throws Exception {
+		LIBIndex list = new LIBIndex();
+		DBConnector DBcon = new DBConnector();
+		Connection conn = DBcon.getConnection();
+		Statement stmt = DBcon.getStatement();
+		try {
+			ResultSet rs = 
+			stmt.executeQuery("SELECT * FROM library WHERE id="+id+";");
+			
+			if(rs.next()) {  
+			list.setId(rs.getInt("id"));
+			list.setTitle(rs.getString("title"));
+			list.setWriter(rs.getString("writer"));
+			list.setPrice(rs.getInt("price"));
+			list.setRental(rs.getString("rental"));
+			list.setCount(rs.getInt("count"));
+			}
+			
+		}
+		catch (Exception e){
+			throw new ServletException(e);
+		}
+		finally {
+			try {
+				stmt.close();
+			}
+			catch (Exception ignored) {
+			}
+			try {
+				conn.close();
+			}
+			catch (Exception ignored){
+			}
+		}
+		return list;
+	}
+		
+	
   public void doPost(HttpServletRequest request, HttpServletResponse response)
           throws IOException, ServletException {
 	  request.setCharacterEncoding("utf-8");
@@ -48,7 +105,6 @@ public class LIBEditServlet extends HttpServlet {
 			  response.sendRedirect("LIBEditDone.jsp?RESULT=Missing");
 		  else {
 			try {
-				System.out.println(price);
 				dbConnect = new DBConnector();
 				conn = dbConnect.getConnection();
 				stmt = dbConnect.getStatement();

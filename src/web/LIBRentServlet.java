@@ -56,7 +56,6 @@ public class LIBRentServlet extends HttpServlet {
 		  rs = stmt.executeQuery(sql);
 		  if(rs.next()) {
 			  String rental = rs.getString("rental");
-			  System.out.println(rental);
 			  if(rental.charAt(0) == 'Y')
 				  return 2;
 			  else

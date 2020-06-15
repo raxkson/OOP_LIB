@@ -1,11 +1,7 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<SCRIPT>
-window.onpageshow = (event) => {
-    if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) location.reload();
-}
-</SCRIPT>
+
 <HTML>
     <HEAD>
     	<TITLE>도서 대여 시스템 - 목록</TITLE>
@@ -40,7 +36,7 @@ window.onpageshow = (event) => {
                  <INPUT TYPE="hidden" name="id" value="${LIB_LIST.id[cnt]}">
         		 <input type="submit" id="submit-form" class="hidden" />
         		</FORM> 
-                <TR id="hover" <c:if test="${param.RETURN != \"true\"}">onClick="location.href='LIBIndexView.jsp?id=${LIB_LIST.id[cnt]}&title=${LIB_LIST.title[cnt]}&writer=${LIB_LIST.writer[cnt]}&price=${LIB_LIST.price[cnt]}&rental=${LIB_LIST.rental[cnt]}&count=${LIB_LIST.count[cnt] }'"</c:if>>
+                <TR id="hover" <c:if test="${param.RETURN != \"true\"}">onClick="location.href='lib-index?id=${LIB_LIST.id[cnt]}'"</c:if>>
                     <TD>${LIB_LIST.id[cnt]}</TD>
                     <TD>${LIB_LIST.title[cnt]}</TD>
                     <TD>${LIB_LIST.writer[cnt]}</TD>

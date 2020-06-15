@@ -36,6 +36,17 @@
     
     
     <servlet>
+        <servlet-name>lib-index-servlet</servlet-name>
+        <servlet-class>web.LIBIndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lib-index-servlet</servlet-name>
+        <url-pattern>/lib-index</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    <servlet>
         <servlet-name>lib-edit-servlet</servlet-name>
         <servlet-class>web.LIBEditServlet</servlet-class>
     </servlet>

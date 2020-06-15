@@ -13,25 +13,25 @@
         <form class="form-horizontal"  name="addform" style="width:40%"ACTION="lib-edit" METHOD="POST" onsubmit="return check()">
 		  <div class="form-group">
 		    <div class="col-sm-10">
-		      <input type="hidden" class="form-control" id="id" NAME=id value="${param.id }" placeholder="${param.id }">
+		      <input type="hidden" class="form-control" id="id" NAME=id value="${LIB_INDEX.id }" placeholder="${LIB_INDEX.id }">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="title" class="col-sm-2 control-label">제목</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="title" NAME=title value="${param.title }" placeholder="${param.title }" required>
+		      <input type="text" class="form-control" id="title" NAME=title value="${LIB_INDEX.title }" placeholder="${LIB_INDEX.title }" required>
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="writer" class="col-sm-2 control-label">저자</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="writer" NAME=writer value="${param.writer }" placeholder="${param.writer }" required>
+		      <input type="text" class="form-control" id="writer" NAME=writer value="${LIB_INDEX.writer }" placeholder="${LIB_INDEX.writer }" required>
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="price" class="col-sm-2 control-label">가격</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="price" NAME=price value="${param.price }" placeholder="${param.price }" required>
+		      <input type="text" class="form-control" id="price" NAME=price value="${LIB_INDEX.price }" placeholder="${LIB_INDEX.price }" required>
 		    </div>
 		  </div>
 		  <div class="form-group">
