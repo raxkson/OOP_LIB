@@ -34,10 +34,13 @@ public class LIBRentServlet extends HttpServlet {
 				stmt.executeUpdate(sql);
 				sql = "UPDATE library SET count = count + 1 WHERE id="+id;
 				stmt.executeUpdate(sql);
-				response.setHeader("Refresh", "0; URL=lib-list");
-				out.print("<script>");
-				out.print("if(!alert(\""+id+"번 도서 대여가 완료 되었습니다.\")) document.location = 'lib-list';");
-				out.print("</script>");
+				response.sendRedirect("LIBRentDone.jsp");
+				/*
+				 * response.setHeader("Refresh", "0; URL=lib-list"); out.print("<script>");
+				 * out.print("if(!alert(\""+
+				 * id+"번 도서 대여가 완료 되었습니다.\")) document.location = 'lib-list';");
+				 * out.print("</script>");
+				 */
 				//response.sendRedirect("lib-list");
 			}else if (check == 1) {
 				response.sendRedirect("LIBRentDone.jsp?RESULT=Rented");

@@ -36,24 +36,24 @@
 			</table>
         	<div style="width:30%">
 	        	<c:if test="${LIB_INDEX.rental eq \"Y\"}">
-	        		<form style="width:20%;display:inline-grid;" ACTION="lib-rent" METHOD="post" class="form-inline">
+	        		<form style="width:20%;display:inline-table;" ACTION="lib-rent" METHOD="post" class="form-inline">
 					  <input type="hidden" NAME=id value="${param.id}">
 					  	<button type="submit" class="btn btn-default">대여</button>
 					</form>
 	        	</c:if>
 	        	<c:if test="${LIB_INDEX.rental eq \"N\"}">
-		        		<form style="width:20%;display:inline-grid;" ACTION="lib-return" METHOD="post" class="form-inline">
+		        		<form style="width:20%;display:inline-table;" ACTION="lib-return" METHOD="post" class="form-inline">
 						  <input type="hidden" NAME=id value="${param.id}">
 						  	<button type="submit" class="btn btn-default">반납</button>
 						</form>
 		        </c:if>
-		        <form style="width:20%;display:inline-grid;" ACTION="lib-delete" METHOD="post" class="form-inline">
-						  <input type="hidden" NAME=id value="${LIB_INDEX.id}">
-						  	<button type="submit" class="btn btn-default">삭제</button>
-				</form>
-				<form style="width:20%;display:inline-grid;" ACTION="lib-edit" METHOD="get" class="form-inline">
+				<form style="width:20%;display:inline-table;" ACTION="lib-edit" METHOD="get" class="form-inline">
 						  <input type="hidden" NAME=id value="${LIB_INDEX.id}">
 						  <button type="submit" class="btn btn-default">수정</button>
+				</form>
+		        <form style="width:20%;display:inline-table;" ACTION="lib-delete" METHOD="post" class="form-inline">
+						  <input type="hidden" NAME=id value="${LIB_INDEX.id}">
+						  	<button type="submit" class="btn btn-default">삭제</button>
 				</form>
 			</div>
 	</main>

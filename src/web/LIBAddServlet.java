@@ -26,7 +26,7 @@ public class LIBAddServlet extends HttpServlet {
 		  out.print("</script>");
 		  //response.sendRedirect("LIBAddView.jsp");
 	  }
-	  else if(id.length() > 10 || price.length() > 10 || title.length() > 30 || price.length() > 30) {
+	  else if(id.length() > 10 || price.length() > 10 || title.length() > 40 || price.length() > 20) {
 		  out.print("<script>");
 		  out.print("if(!alert(\"값이 너무 큽니다.\")) document.location = 'LIBAddView.jsp';");
 		  out.print("</script>");
@@ -53,7 +53,7 @@ public class LIBAddServlet extends HttpServlet {
 				String sql = "INSERT INTO library (id, title, writer, price, rental, count) VALUES ("+id+",\""+title+"\",\""+writer+"\","+price+",\"Y\",0);";
 				stmt.executeUpdate(sql);
 				out.print("<script>");
-				out.print("if(!alert(\"추가가 완료 되었습니다.\")) document.location = 'lib-list';");
+				out.print("if(!alert(\""+id+"번 도서 추가가 완료 되었습니다.\")) document.location = 'lib-list';");
 				out.print("</script>");
 				
 				//response.sendRedirect("lib-list");

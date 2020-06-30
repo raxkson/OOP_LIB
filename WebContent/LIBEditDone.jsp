@@ -16,6 +16,7 @@
 	    	<c:if test="${param.RESULT == \"Unvalid\" }">
 	    		<H3>잘못 된 값을 입력하였습니다.</H3>
 	    	</c:if>
+	    	<button type="button" class="btn btn-secondary" onclick="location='lib-list'">목록으로 돌아가기</button>
 	    </main>
     	<jsp:include page="footer.jsp"></jsp:include>
     </BODY>

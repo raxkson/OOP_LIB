@@ -10,8 +10,20 @@
     <BODY>
     <main role="main" class="container" style="min-height: 100%;padding-top: 60px;">
     	<c:choose>
-	    	<c:when test="${param.FIND != null}">
+	    	<c:when test="${param.FIND == \"true\"}">
 	    		<H4>검색 목록 보기 : ${param.QUERY}</H4>
+	    	</c:when>
+	    	<c:when test="${param.SORT eq \"count\"}">
+	    		<H4>도서 목록 보기 - 대여량 기준</H4>
+	    	</c:when>
+	    	<c:when test="${param.SORT eq \"rented\"}">
+	    		<H4>도서 목록 보기 - 대여된 책</H4>
+	    	</c:when>
+	    	<c:when test="${param.SORT eq \"rentable\"}">
+	    		<H4>도서 목록 보기 - 대여 가능한 책 </H4>
+	    	</c:when>
+	    	<c:when test="${param.RETURN == \"true\" }">
+	    		<H4>도서 목록 보기 - 반납</H4>
 	    	</c:when>
     		<c:otherwise>
         		<H4>도서 목록 보기</H4>
@@ -54,7 +66,26 @@
 	        <div class="btn-group mr-2" style="width:35%; float:none; margin:0 auto" role="group" aria-label="First group">
 	        	<c:if test="${param.PAGE > 9}">
 	        		<fmt:parseNumber value="${param.PAGE / 10 }" var="prevPage" integerOnly="TRUE" type="NUMBER"></fmt:parseNumber>
-	        		<button type="button" class="btn btn-secondary" onclick="location='lib-list?PAGE=${prevPage * 10 - 1}'">이전</button>
+	        		<c:choose>
+	        			<c:when test="${param.SORT eq \"rented\"}">
+	        				<button type="button" class="btn btn-secondary" onclick="location='lib-list?SORT=rented&PAGE=${prevPage * 10 - 1}'">이전</button>
+	        			</c:when>
+	        			<c:when test="${param.SORT eq \"rentable\"}">
+	        				<button type="button" class="btn btn-secondary" onclick="location='lib-list?SORT=rentable&PAGE=${prevPage * 10 - 1}'">이전</button>
+	        			</c:when>
+	        			<c:when test="${param.SORT eq \"count\"}">
+	        				<button type="button" class="btn btn-secondary" onclick="location='lib-list?SORT=count&PAGE=${prevPage * 10 - 1}'">이전</button>
+	        			</c:when>
+	        			<c:when test="${param.RETURN == \"true\" }">
+				    		<button type="button" class="btn btn-secondary" onclick="location='lib-list?&RETURN=true&PAGE=${prevPage * 10 - 1}'">이전</button>
+				    	</c:when>
+				    	<c:when test="${param.FIND == \"true\" }">
+				    		<button type="button" class="btn btn-secondary" onclick="location='lib-list?&FIND=true&QUERY=${param.QUERY }&PAGE=${prevPage * 10 - 1}'">이전</button>
+				    	</c:when>
+		        		<c:otherwise>
+	        				<button type="button" class="btn btn-secondary" onclick="location='lib-list?PAGE=${prevPage * 10 - 1}'">이전</button>
+		        		</c:otherwise>
+	        		</c:choose>
 	        	</c:if>
 	        <c:choose>
 	        	<c:when test="${param.SORT == \"rented\"}">
@@ -102,12 +133,30 @@
 	        </c:choose>
 	        <c:choose>
 	        	<c:when test="${(LIB_LIST.lastPage ne true) and (LIB_LIST.lastSize > 10) and (param.page < 10) }">
-	        		<button type="button" class="btn btn-secondary" onclick="location='lib-list?PAGE=10'">다음</button>
+	        			<button type="button" class="btn btn-secondary" onclick="location='lib-list?PAGE=10'">다음</button>
 	        	</c:when>
 	        	<c:when test="${LIB_LIST.lastPage ne true && not ((LIB_LIST.lastSize / 10) * 10 < param.PAGE) ne true }">
 	        		<fmt:parseNumber value="${param.PAGE / 10}" var="nextPage" integerOnly="TRUE" type="NUMBER"></fmt:parseNumber>
-	        
-	        		<button type="button" class="btn btn-secondary" onclick="location='lib-list?PAGE=${(nextPage + 1) * 10}'">다음</button>
+	        		<c:choose>
+	        			<c:when test="${param.SORT eq \"rented\"}">
+	        				<button type="button" class="btn btn-secondary" onclick="location='lib-list?SORT=rented&PAGE=${(nextPage + 1) * 10}'">다음</button>
+	        			</c:when>
+	        			<c:when test="${param.SORT eq \"rentable\"}">
+	        				<button type="button" class="btn btn-secondary" onclick="location='lib-list?SORT=rentable&PAGE=${(nextPage + 1) * 10}'">다음</button>
+	        			</c:when>
+	        			<c:when test="${param.SORT eq \"count\"}">
+	        				<button type="button" class="btn btn-secondary" onclick="location='lib-list?SORT=count&PAGE=${(nextPage + 1) * 10}'">다음</button>
+	        			</c:when>
+	        			<c:when test="${param.RETURN == \"true\" }">
+				    		<button type="button" class="btn btn-secondary" onclick="location='lib-list?RETURN=true&PAGE=${(nextPage + 1) * 10}'">다음</button>
+				    	</c:when>
+				    	<c:when test="${param.FIND == \"true\" }">
+				    		<button type="button" class="btn btn-secondary" onclick="location='lib-list?FIND=true&QUERY=${param.QUERY}&PAGE=${(nextPage + 1) * 10}'">다음</button>
+				    	</c:when>
+		        		<c:otherwise>
+		        			<button type="button" class="btn btn-secondary" onclick="location='lib-list?PAGE=${(nextPage + 1) * 10}'">다음</button>
+		        		</c:otherwise>
+	        		</c:choose>
 	        	</c:when>
 	        </c:choose>
 	        </div>
